@@ -1,5 +1,6 @@
 package com.example.testtask.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,11 +11,12 @@ import java.util.Date;
 @Setter
 @Entity
 @Table(name = "products")
-public class Product extends BaseEntity{
+public class Product extends BaseEntity {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "entry_date", nullable = false)
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private Date entryDate;
-    @Column(name = "item_code", nullable = false, unique = true)
+    @Column(name = "item_code", nullable = false)
     private Integer itemCode;
     @Column(name = "item_name", nullable = false)
     private String itemName;

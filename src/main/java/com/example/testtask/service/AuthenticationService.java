@@ -1,8 +1,8 @@
 package com.example.testtask.service;
 
-import com.example.testtask.dao.request.SignInRequest;
-import com.example.testtask.dao.request.SignUpRequest;
-import com.example.testtask.dao.response.JwtAuthenticationResponse;
+import com.example.testtask.data.request.SignInRequest;
+import com.example.testtask.data.request.SignUpRequest;
+import com.example.testtask.data.response.JwtAuthenticationResponse;
 
 public interface AuthenticationService {
     JwtAuthenticationResponse signup(SignUpRequest request);

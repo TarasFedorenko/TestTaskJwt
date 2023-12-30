@@ -1,8 +1,8 @@
 package com.example.testtask.service.impl;
 
-import com.example.testtask.dao.request.SignInRequest;
-import com.example.testtask.dao.request.SignUpRequest;
-import com.example.testtask.dao.response.JwtAuthenticationResponse;
+import com.example.testtask.data.request.SignInRequest;
+import com.example.testtask.data.request.SignUpRequest;
+import com.example.testtask.data.response.JwtAuthenticationResponse;
 import com.example.testtask.entity.Role;
 import com.example.testtask.entity.User;
 import com.example.testtask.repository.UserRepository;
@@ -15,7 +15,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
-
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -26,6 +25,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
+
     @Override
     public JwtAuthenticationResponse signup(SignUpRequest request) {
         var user = User.builder()

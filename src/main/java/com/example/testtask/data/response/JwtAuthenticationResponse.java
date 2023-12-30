@@ -1,4 +1,4 @@
-package com.example.testtask.dao.response;
+package com.example.testtask.data.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

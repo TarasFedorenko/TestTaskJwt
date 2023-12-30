@@ -1,7 +1,8 @@
 package com.example.testtask.controller;
-import com.example.testtask.dao.request.SignInRequest;
-import com.example.testtask.dao.request.SignUpRequest;
-import com.example.testtask.dao.response.JwtAuthenticationResponse;
+
+import com.example.testtask.data.request.SignInRequest;
+import com.example.testtask.data.request.SignUpRequest;
+import com.example.testtask.data.response.JwtAuthenticationResponse;
 import com.example.testtask.service.AuthenticationService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +18,7 @@ import lombok.RequiredArgsConstructor;
 public class AuthenticationController {
 
     private final AuthenticationService authenticationService;
+
     @PostMapping("/signup")
     public ResponseEntity<JwtAuthenticationResponse> signup(@RequestBody SignUpRequest request) {
         return ResponseEntity.ok(authenticationService.signup(request));

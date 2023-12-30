@@ -10,11 +10,13 @@ import io.jsonwebtoken.security.Keys;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Value;
+
 import java.security.Key;
 import java.util.Date;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.function.Function;
+
 @Service
 public class JwtServiceImpl implements JwtService {
 
@@ -48,9 +50,6 @@ public class JwtServiceImpl implements JwtService {
     private String generateToken(Map<String, Object> extraClaims, UserDetails userDetails) {
         return buildToken(extraClaims, userDetails, jwtExpiration);
     }
-    private long getExpirationTime() {
-        return jwtExpiration;
-    }
 
     private String buildToken(Map<String, Object> extraClaims, UserDetails userDetails, long expiration) {
         return Jwts
@@ -66,6 +65,7 @@ public class JwtServiceImpl implements JwtService {
     public boolean isTokenExpired(String token) {
         return extractExpiration(token).before(new Date());
     }
+
     public Claims extractAllClaims(String token) {
         return Jwts
                 .parserBuilder()
@@ -74,6 +74,7 @@ public class JwtServiceImpl implements JwtService {
                 .parseClaimsJws(token)
                 .getBody();
     }
+
     private Date extractExpiration(String token) {
         return extractClaim(token, Claims::getExpiration);
     }
