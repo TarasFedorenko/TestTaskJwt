@@ -15,7 +15,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -57,8 +56,8 @@ class TestTaskApplicationTests {
         Date product1 = new SimpleDateFormat("dd-MM-yyyy").parse("03-01-2023");
         Date product2 = new SimpleDateFormat("dd-MM-yyyy").parse("03-02-2023");
         ProductsRequest productsRequest = new ProductsRequest(Arrays.asList(
-                new Product(product1, 11111,"Product1",20,"Paid"),
-                new Product(product2, 11112,"Product2",10,"Paid")));
+                new Product(product1, 11111, "Product1", 20, "Paid"),
+                new Product(product2, 11112, "Product2", 10, "Paid")));
         String productsRequestBody = objectMapper.writeValueAsString(productsRequest);
 
         mockMvc.perform(MockMvcRequestBuilders.post("/products/add")
@@ -74,6 +73,4 @@ class TestTaskApplicationTests {
                 .andExpect(jsonPath("$.length()").value(2))
                 .andReturn();
     }
-
-
 }

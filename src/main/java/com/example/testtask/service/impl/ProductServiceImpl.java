@@ -22,7 +22,6 @@ public class ProductServiceImpl implements ProductService {
             throw new RuntimeException("No products in list");
         }
     }
-
     @Override
     public List<Product> getAllProducts() {
         return productRepository.findAll();
